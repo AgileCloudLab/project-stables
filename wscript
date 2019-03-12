@@ -1,0 +1,39 @@
+from waflib.Tools.compiler_cxx import cxx_compiler
+#from scripts.waf import utils
+
+# import subprocess
+import os
+from waf_au_extension import utility as au_utility
+
+APPNAME = 'PROJECT_NAME' #TODO: REPLACE
+VERSION = 'VERSION' #TODO: REPLACE 
+
+cxx_compiler['linux'] = ['clang++']
+
+def options(opt) :
+    opt.load('compiler_cxx')
+
+def configure(cnf) :
+    cnf.load('compiler_cxx')
+    cnf.env.append_value('CXXFLAGS', ['-std=c++17', '-Wall', '-Werror', '-Wextra'])
+    cnf.env.append_value('LINKFLAGS',
+                         ['-pthread'])
+
+
+def build(bld):
+    # REPLACE PROJECT NAME 
+    bld(name = 'PROJECT_NAME_includes',
+        includes='./src',
+        export_includes='./src')
+        
+    # Build Examples
+    # bld.recurse('examples/EXAMPLE_NAME')
+
+    # Build Test
+    # bld.recurse('test/TEST_NAME')
+
+def test(t):
+    au_utility.runt_tests('./build/test')
+
+def doc(dc):
+    au_utility.generate_documentation()
