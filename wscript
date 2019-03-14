@@ -3,7 +3,8 @@ from waflib.Tools.compiler_cxx import cxx_compiler
 
 # import subprocess
 import os
-from waf_au_extension import utility as au_utility
+from waf_au_extensions import utils as au_utility
+
 
 APPNAME = 'PROJECT_NAME' #TODO: REPLACE
 VERSION = 'VERSION' #TODO: REPLACE 
@@ -33,7 +34,7 @@ def build(bld):
     # bld.recurse('test/TEST_NAME')
 
 def test(t):
-    au_utility.runt_tests('./build/test')
+    au_utility.run_tests('build/test')
 
 def doc(dc):
     au_utility.generate_documentation()
