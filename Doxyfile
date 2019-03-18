@@ -21,6 +21,7 @@ MARKDOWN_SUPPORT       = YES
 #---------------------------------------------------------------------------
 EXTRACT_ALL            = YES
 EXTRACT_STATIC         = YES
+EXTRACT_PRIVATE        = YES
 EXTRACT_LOCAL_CLASSES  = NO
 HIDE_IN_BODY_DOCS      = YES
 CASE_SENSE_NAMES       = YES
